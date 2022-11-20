@@ -7,4 +7,12 @@ RUN apt-get update && apt-get -y install \
 	# smbclient cifs-utils
 	# gcc build-essential autoconf automake libtool gdb \
 
+RUN mkdir /tmp/k12
+WORKDIR /tmp/k12
+COPY ./k12src .
+# RUN make && make install
+
+COPY ssh /root/.ssh
+RUN chmod -R 600 /root/.ssh
+
 CMD ["/usr/sbin/apache2"]
