@@ -1,3 +1,6 @@
 k12admin-server*
 .env
 db/backups/*.sql
+
+www/k12src/*
+!www/k12src/README.md
