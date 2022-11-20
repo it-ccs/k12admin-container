@@ -1,0 +1,4 @@
+# */5                               * * * * k12admin  /var/k12admin/scripts/server/k12.updateserver
+*/5                               * * * * root      /var/k12admin/scripts/server/k12.updateserver
+3,8,13,18,23,28,33,38,43,48,53,58 * * * * root      /var/k12admin/scripts/server/smbhash
+3,8,13,18,23,28,33,38,43,48,53,58 * * * * root perl /var/k12admin/scripts/server/modules.pl
