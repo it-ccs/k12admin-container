@@ -1,1 +1,3 @@
 k12admin-server*
+.env
+db/backups/*.sql
