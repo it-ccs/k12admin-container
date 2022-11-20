@@ -1,19 +1,22 @@
 ---
-verison: "3"
+version: "3"
+volumes:
+   k12admin:
+   mariadb_data:
 services:
    web:
-      build: ./www
+      build: ./web
       ports:
          - 80:80
       volumes:
          - .:/code
-      command: npm run dev
+         - k12admin:/var/k12admin
    db:
       image: mariadb
       environment:
          - MARIADB_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}
       volumes:
-         - postgres:/var/lib/postgresql/data
+         - mariadb_data:/var/lib/mysql/
          - ./db/backups:/docker-entrypoint-initdb.d
    adminer:
       image: adminer
@@ -21,5 +24,6 @@ services:
          - 8080:8080
    cron:
       build: ./cron
-      volume:
-         - ./cron/crontab:/etc/cron.d/crontab
+      volumes:
+         - ./cron/crontab:/etc/cron.d/k12admin
+         - k12admin:/var/k12admin
